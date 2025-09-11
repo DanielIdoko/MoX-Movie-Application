@@ -31,7 +31,7 @@ function Navbar() {
         to="/"
         className="hidden md:flex p-4.5 md:pl-14 w-16 h-16 text-white"
       >
-        {logo}
+        <img src={logo} alt="Mox logo image" />
       </Link>
 
       <nav className="w-fit rounded-4xl p-3 md:p-3 xl:p-3.5 flex flex-1 justify-around md:justify-start md:gap-15 md:ml-20 lg:ml-70">

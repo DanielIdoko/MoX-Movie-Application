@@ -26,7 +26,7 @@ export default function MovieCard({ movieData, movieState }) {
         />
       </div>
       <div className='w-full h-fit relative'>
-        <p className='text-small text-gray-200 pt-2'>{movieData.originalTitle.slice(0, 15) + "..."}</p>
+        <p className='text-small text-gray-200 pt-2'>{movieData.originalTitle.length > 20 ? movieData.originalTitle.slice(0, 15) + "..." : movieData.originalTitle}</p>
         <button className='saved-btn' onClick={() => handleSave()}>
           <FiHeart />
         </button>
