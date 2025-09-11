@@ -123,12 +123,11 @@ export default function Home() {
                   },
                 }}
               >
-                {movies.slice(0, 20).map((movie) => (
+                {movies.slice(0, 30).map((movie) => (
                   <>
                     <SwiperSlide key={uuid4()}>
                       <MovieCard
                         movieData={movie}
-                        loading={"lazy"}
                         movieState={movie}
                       />
                     </SwiperSlide>

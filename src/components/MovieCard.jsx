@@ -26,13 +26,13 @@ export default function MovieCard({ movieData, movieState }) {
         />
       </div>
       <div className='w-full h-fit relative'>
-        <p className='text-small text-gray-200 pt-2'>{movieData.originalTitle}</p>
+        <p className='text-small text-gray-200 pt-2'>{movieData.originalTitle.slice(0, 15) + "..."}</p>
         <button className='saved-btn' onClick={() => handleSave()}>
           <FiHeart />
         </button>
         {/* Rating */}
         <span className='text-sm pt-2 pb-1 text-gray-600 font-bold '>
-          {movieData.averageRating ? movieData.averageRating : 3}⭐
+          ⭐ {movieData.averageRating ? movieData.averageRating : 3}
         </span>
       </div>
     </Link>
