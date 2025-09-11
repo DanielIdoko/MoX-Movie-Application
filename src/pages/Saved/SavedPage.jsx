@@ -3,6 +3,7 @@ import Main from "../../store/main";
 const SavedMovie = lazy(() => import("../../components/Saved/SavedMovie"));
 const Spinner = lazy(() => import("../../components/Spinner"));
 import { v4 as uuid } from "uuid";
+
 const SavedPage = () => {
   const { savedMovies, getSavedMovies } = Main();
 
