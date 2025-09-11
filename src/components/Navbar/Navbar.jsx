@@ -4,7 +4,7 @@ import { Link, NavLink } from "react-router-dom";
 import SearchInput from "../SearchInput";
 import Main from "../../store/main";
 import { v4 as uuid } from "uuid";
-import { logo } from "../../assets";
+import { logo } from "../../assets/index";
 
 // The navigation' data array
 const navs = [
@@ -29,9 +29,9 @@ function Navbar() {
     <header className="md:w-full hidden md:flex md:items-center md:fixed md:z-50 md:bg-dark xl:p-1 md:h-20 md:top-0 md:rounded-none">
       <Link
         to="/"
-        className="hidden md:flex p-4.5 md:pl-14 w-16 h-16 text-white"
+        className="hidden md:flex md:pl-14 w-fit h-fit rounded-full"
       >
-        <img src={logo} alt="Mox logo image" />
+        <img src={logo} alt="Mox logo image" className="w-15 h-15 rounded-full"/>
       </Link>
 
       <nav className="w-fit rounded-4xl p-3 md:p-3 xl:p-3.5 flex flex-1 justify-around md:justify-start md:gap-15 md:ml-20 lg:ml-70">
