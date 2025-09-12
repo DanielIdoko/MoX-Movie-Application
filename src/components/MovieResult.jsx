@@ -1,7 +1,8 @@
-import React, { useCallback } from "react";
+import React, { Suspense, useCallback } from "react";
 import { Link } from "react-router-dom";
 import Main from "../store/main";
 import { FiHeart } from "react-icons/fi";
+import ImageSkeleton from "./Skeleton/ImageSkeleton";
 
 const MovieResult = ({ result }) => {
   const { handleSaveMovie, handleToggleModal, modalShown } = Main();
@@ -23,16 +24,18 @@ const MovieResult = ({ result }) => {
           </button>
         </div>
         <div className="w-full h-auto overflow-hidden rounded-xl">
-          <img
-            src={
-              decodeURIComponent(result.primaryImage).length > 10
-                ? result.primaryImage
-                : PosterImage
-            }
-            alt={result.originalTitle}
-            className="w-full h-40
+          <Suspense fallback={<ImageSkeleton />}>
+            <img
+              src={
+                decodeURIComponent(result.primaryImage).length > 10
+                  ? result.primaryImage
+                  : PosterImage
+              }
+              alt={result.originalTitle}
+              className="w-full h-40
           40 object-cover"
-          />
+            />
+          </Suspense>
         </div>
 
         <p className="text-small text-gray-200 pt-2">{result.originalTitle}</p>

@@ -1,9 +1,10 @@
-import React, { useCallback } from "react";
+import React, { Suspense, useCallback } from "react";
 import { Link } from "react-router-dom";
 import { PosterImage } from "../assets";
 import { FiHeart } from "react-icons/fi";
 import Main from "../store/main";
 import { AiFillHeart } from "react-icons/ai";
+import ImageSkeleton from "./Skeleton/ImageSkeleton";
 
 export default function MovieCard({ movieData, movieState }) {
   // Saved movies state gotten from Main store to track interaction with saved movies
@@ -36,7 +37,8 @@ export default function MovieCard({ movieData, movieState }) {
       </div>
 
       <div className="overflow-hidden rounded-xl">
-        <img
+        <Suspense fallback={<ImageSkeleton/>}>
+          <img
           src={
             decodeURIComponent(movieData.primaryImage).length > 10
               ? movieData.primaryImage
@@ -46,6 +48,7 @@ export default function MovieCard({ movieData, movieState }) {
           className="w-full h-40
           40 object-cover"
         />
+        </Suspense>
       </div>
 
       <p className="text-small text-gray-200 pt-2">
