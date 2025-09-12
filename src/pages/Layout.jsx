@@ -4,6 +4,7 @@ import { Outlet } from 'react-router-dom'
 import BottomNavigation from '../components/Navigation/BottomNavigation'
 import Main from '../store/main'
 import { lazy } from 'react'
+import ScrollToTop from '../utils/ScrollToTop'
 const Modal = lazy(() => import("../components/Modal/Modal"))
 
 
@@ -28,6 +29,7 @@ const Layout = () => {
   
   return (
     <div className='w-full h-full overflow-hidden flex flex-col'>
+      <ScrollToTop />
       {/* Navbar */}
       <Navbar />
       {/* Success Modal for message on adding a movie to the saved page */}
