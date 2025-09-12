@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Suspense } from "react";
 import { useState } from "react";
 // import Swiper core and required modules
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -6,27 +6,30 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import { FiArrowDown, FiArrowUp, FiHeart } from "react-icons/fi";
 import { PosterImage } from "../assets";
-import Main from '../store/main'
-
+import Main from "../store/main";
+import ImageSkeleton from "./Skeleton/ImageSkeleton";
 
 const MovieDetail = ({ movieData }) => {
   // This state will help us toggle for more details
   const [moreDetailsShown, setMoreDetailsShown] = useState(false);
   // const { handleSaveMovie } = Main();
 
+  let Image = (
+    <img
+      src={
+        decodeURIComponent(movieData.primaryImage).length > 10
+          ? movieData.primaryImage
+          : PosterImage
+      }
+      alt={movieData.originalTitle}
+    />
+  );
   return (
     <div className="w-full h-full p-2">
       <div className="w-full h-full block md:grid md:grid-cols-3 md:gap-10">
         {/* Image section */}
         <div className="w-fit h-fit overflow-hidden rounded-2xl shadow-xl">
-          <img
-            src={
-              decodeURIComponent(movieData.primaryImage).length > 10
-                ? movieData.primaryImage
-                : PosterImage
-            }
-            alt={movieData.originalTitle}
-          />
+          <Suspense fallback={<ImageSkeleton />}>{Image}</Suspense>
         </div>
         {/* Text section */}
         <div className="w-full h-full col-span-2 p-2">
@@ -39,14 +42,13 @@ const MovieDetail = ({ movieData }) => {
                 {genre.toUpperCase()}
               </li>
             ))}
-{/* 
+            {/* 
             <button
                 className="text-gray-500 p-1 text-medium flex items-center justify-center absolute right-0 transition duration-200 ease-in rounded-full cursor-pointer hover:bg-gray-400/10 hover:text-white"
               onClick={() => handleSaveMovie()}
             >
               <FiHeart />
             </button> */}
-            
           </ul>
           <span className="w-full h-fit flex items-center justify-start mt-6 gap-2">
             <h3 className="text-x-medium md:text-large text-white flex-1">
@@ -96,7 +98,9 @@ const MovieDetail = ({ movieData }) => {
           <div className="w-full h-fit p-1 flex items-center justify-start gap-10 mt-6">
             <div className="w-fit h-full flex flex-col justify-center items-center">
               <p className="text-x-medium text-gray-300">
-                {movieData.averageRating}
+                {movieData.averageRating
+                  ? movieData.averageRating
+                  : "2.5 or above"}
               </p>
               <span className="text-small text-gray-500">Rating</span>
             </div>
