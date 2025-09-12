@@ -1,4 +1,4 @@
-import React, { lazy, Suspense, useEffect, useState } from "react";
+ import React, { lazy, Suspense, useEffect, useState } from "react";
 import Spinner from "../components/Spinner";
 import Footer from "../components/Footer";
 import useFetchMovies from "../store/useFetchMovies";
@@ -38,7 +38,12 @@ export default function Home() {
 
   // Call filterMovies(depends on a selected category) and fetchMovies(Runs on every load of the app) function
   useEffect(() => {
+    const controller = new AbortController()
     filterMovies(selectedCategory);
+
+    return () => {
+      controller.abort()
+    }
   }, [selectedCategory]);
 
   // Search bar state import
@@ -72,22 +77,22 @@ export default function Home() {
               disableOnInteraction: false,
             }}
           >
-            {movies.slice(0, 10).map((movie) => (
+            {movies?.slice(0, 10).map((movie) => (
               <SwiperSlide key={uuid4()}>
                 <Link
                   to={`/movie/${movie.id}`}
                   className="w-full h-full relative overflow-hidden bg-amber-50"
                 >
-                  <div>
+                  <>
                     <img
                       src={movie.primaryImage}
                       alt={movie.originalTitle + "Image"}
                       className="h-screen w-full object-cover"
                     />
-                  </div>
+                  </>
                   <div className="absolute w-full h-fit bottom-0 p-3 md:p-10 bg-dark/50">
                     <h1 className="text-large p-2">{movie.originalTitle}</h1>
-                    <p className="text-gray-200 p-2">{movie.description}</p>
+                    <p className="text-white p-2">{movie.description}</p>
                     {/* <Link to={`/movie/${movie.id}`} className='flex items-center gap-2 text-small text-gray-800 hover:text-gray-400 p-2 transition duration-500 ease-in underline'>View more details <FiArrowRight /></Link> */}
                   </div>
                 </Link>
@@ -99,8 +104,9 @@ export default function Home() {
       {/* Hero section Ends */}
       {/* Popular movies section */}
       <section className="w-full h-auto p-3 bg-transparent md:mt-26 md:p-8">
-        <h2 className="sub-heading">Most Popular Movies For You</h2>
-        <div className="w-full h-full flex-items-center justify-start p-3 md:p-6">
+        <h2 className="sub-heading">Popular Movies</h2>
+
+        <div className="w-full h-full p-3">
           <Suspense fallback={<Spinner />}>
             {errorMessage ? (
               <p className="text-center text-md text-base-color">
@@ -123,9 +129,9 @@ export default function Home() {
                   },
                 }}
               >
-                {movies.slice(0, 30).map((movie) => (
+                {movies?.slice(0, 15).map((movie) => (
                   <>
-                    <SwiperSlide key={uuid4()}>
+                    <SwiperSlide key={uuid4()} className="w-fit h-full p-2">
                       <MovieCard
                         movieData={movie}
                         movieState={movie}
@@ -141,8 +147,8 @@ export default function Home() {
       {/* Popular movies ection ends here */}
       {/* Categories section */}
       <section className="movies-categories">
-        <h2 className="sub-heading">Filter by Category</h2>
-        <nav className="w-full h-auto flex items-center justify-start gap-1 md:gap-6 md:pl-3">
+        <h2 className="sub-heading">Expolore different categories</h2>
+        <nav className="w-full h-auto flex items-center justify-start gap-1 pl-2 md:gap-6 md:pl-4 sticky top-0 left-0">
           {categories.map((category) => (
             <button
               className="category-button"
@@ -164,8 +170,8 @@ export default function Home() {
         ) : isLoading ? (
           <Spinner />
         ) : (
-          <div className="w-full h-auto mt-6 grid grid-cols-2 md:grid-cols-3 gap-5 lg:grid-cols-6 items-center justify-items-center">
-            {filteredMovies.slice(0, 30).map((movie) => (
+          <div className="w-full h-auto mt-6 md:p-2 grid grid-cols-2 md:grid-cols-3 gap-5 lg:grid-cols-6 items-center justify-items-center">
+            {filteredMovies.slice(0, 34).map((movie) => (
               <Suspense fallback={<Spinner />} key={uuid4()}>
                 <MovieCard movieData={movie} movieState={movie} />
               </Suspense>

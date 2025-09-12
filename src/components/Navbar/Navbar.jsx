@@ -26,23 +26,22 @@ function Navbar() {
   const { handleToggleSearchBar } = Main();
 
   return (
-    <header className="md:w-full hidden md:flex md:items-center md:fixed md:z-50 md:bg-dark xl:p-1 md:h-20 md:top-0 md:rounded-none">
+    <header className="md:w-full hidden md:flex md:items-center md:fixed md:z-50 md:bg-dark xl:p-1 md:h-20 md:top-0 md:rounded-none md:px-3">
       <Link
         to="/"
-        className="hidden md:flex md:pl-14 w-fit h-fit rounded-full"
+        className="hidden md:flex w-fit h-fit rounded-full"
       >
         <img src={logo} alt="Mox logo image" className="w-15 h-15 rounded-full"/>
       </Link>
 
-      <nav className="w-fit rounded-4xl p-3 md:p-3 xl:p-3.5 flex flex-1 justify-around md:justify-start md:gap-15 md:ml-20 lg:ml-70">
+      <nav className="w-fit rounded-4xl p-3 md:p-3 xl:p-3.5 flex flex-1 justify-around md:justify-start md:gap-15 lg:ml-70">
         {navs.map((navLink) => (
           <NavLink
             key={uuid()}
             to={navLink.path}
             className="nav-link"
             style={({ isActive }) => ({
-              color: isActive ? "#f9f8ff" : "#555",
-              backgroundColor: isActive ? "rgba(255,255,255,.1)" : "",
+              color: isActive ? "#4750ff" : "#555",
             })}
           >
             <span className="text-xl md:text-md md:hidden block">

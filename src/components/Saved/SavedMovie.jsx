@@ -3,6 +3,7 @@ import { FiTrash } from "react-icons/fi";
 import { Link } from "react-router-dom";
 import Main from "../../store/main";
 
+// Confirmation Modal
 const ConfirmModal = ({ handleToggleConfirmModal, deleteSavedMovie, movie }) => {
     return (
         <div className="w-screen h-dvh bg-black/50 backdrop-blur-sm flex items-center justify-center fixed top-0 right-0 z-50">
@@ -32,11 +33,13 @@ const ConfirmModal = ({ handleToggleConfirmModal, deleteSavedMovie, movie }) => 
     );
 };
 
+
+// Main component
 const SavedMovie = ({ movie, handleToggleConfirmModal, confirmModalShown }) => {
     const { handleDeleteMovie } = Main();
 
     return (
-        <li className="w-full h-16 p-1 flex items-center justify-between border border-transparent hover:border-blue-900 transition">
+            <li className="w-full h-16 p-1 flex items-center justify-between border border-transparent hover:border-blue-900/20 transition">
             {confirmModalShown && (
                 <ConfirmModal
                     handleToggleConfirmModal={handleToggleConfirmModal}
@@ -58,7 +61,6 @@ const SavedMovie = ({ movie, handleToggleConfirmModal, confirmModalShown }) => {
                     <p className="text-sm font-bold text-gray-200">
                         {movie.originalTitle}
                     </p>
-                    <p className="text-xs text-gray-400">{movie.runtimeMinutes || "" + "54 mins"}</p>
                 </div>
             </Link>
 

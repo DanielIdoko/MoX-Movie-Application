@@ -13,19 +13,6 @@ img:hover {
   transform: scale(1.1);
 }
 
-.sub-heading{
-  @apply text-small md:text-medium p-3 md:p-5 md:pl-4 text-white 
-}
-
-.info {
-    @apply text-gray-500 text-small font-bold 
-}
-.movie-card{
-  @apply w-44 md:w-48 h-60 bg-dark relative p-1 rounded-2xl cursor-pointer overflow-hidden
-}
-
-
-
 span{
   @apply font-normal
 }
@@ -42,7 +29,7 @@ span{
   --font-family-1: "Open sans", sans-serif;
   /* Color themes */
   --color-base-color: #f9f8ff;
-  --color-dark: #001;
+  --color-dark: #05000f;
   --color-primary-color: #4750ff;
   --color-secondary-color: #1b0424;
 }
@@ -51,7 +38,7 @@ span{
 .loader {
   width: 30px;
   height: 30px;
-  border: 5px solid #fff;
+  border: 5px solid #ffffff;
   border-bottom-color: transparent;
   border-radius: 50%;
   display: inline-block;
@@ -85,7 +72,18 @@ span{
   }
 }
 
-/* Stying for navlink */
+
+.sub-heading{
+    @apply text-small md:text-medium p-3 pl-2 md:p-5 md:pl-5 text-white 
+}
+.info {
+    @apply text-gray-300 text-small font-bold 
+}
+.movie-card{
+  @apply w-40 md:w-48 h-60 rounded-2xl cursor-pointer overflow-hidden
+}
+
+/* Stlying for navlink */
 .nav-link {
   padding: 6px 15px;
   height: 44px;
@@ -138,8 +136,6 @@ span{
 .movies-categories {
   @apply w-full bg-dark h-full pl-5 p-3 md:p-10;
 }
-
-
 .saved-btn{
-  @apply text-gray-500 p-1 text-medium flex items-center justify-center absolute right-1 top-2 transition duration-500 ease-in rounded-full cursor-pointer hover:bg-blue-900 hover:text-white
+  @apply text-gray-500 p-1 text-medium flex items-center justify-center absolute transition duration-200 ease-in rounded-full cursor-pointer hover:bg-gray-400/10 hover:text-white
 }
