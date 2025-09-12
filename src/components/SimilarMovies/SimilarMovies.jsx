@@ -18,7 +18,7 @@ const SimilarMovies = ({ movie }) => {
 
     // Using a separate useEffect to handle the state update when filteredMovies changes
     useEffect(() => {
-        // filterMovies(movie.genres[1] || movie.genres[0]);
+        filterMovies(movie.genres[1]);
         if (filteredMovies.length > 0) {
             setSimilarMovies(filteredMovies.reverse());
         }
