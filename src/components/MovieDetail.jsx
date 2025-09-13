@@ -1,4 +1,4 @@
-import React, { Suspense } from "react";
+import React, { Suspense, useCallback } from "react";
 import { useState } from "react";
 // import Swiper core and required modules
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -8,11 +8,20 @@ import { FiArrowDown, FiArrowUp, FiHeart } from "react-icons/fi";
 import { PosterImage } from "../assets";
 import Main from "../store/main";
 import ImageSkeleton from "./Skeleton/ImageSkeleton";
+import { AiFillHeart } from "react-icons/ai";
 
 const MovieDetail = ({ movieData }) => {
   // This state will help us toggle for more details
   const [moreDetailsShown, setMoreDetailsShown] = useState(false);
   // const { handleSaveMovie } = Main();
+
+  // Saved movies state gotten from Main store to track interaction with saved movies
+  const { handleSaveMovie, handleToggleModal, modalShown } = Main();
+
+  const handleSave = useCallback(() => {
+    handleSaveMovie(movieData);
+    handleToggleModal();
+  }, [modalShown]);
 
   let Image = (
     <img
@@ -68,8 +77,13 @@ const MovieDetail = ({ movieData }) => {
               ? movieData.description
               : "No description for this movie"}
           </p>
-
-          <p className="text-gray-300 pt-15 text-small">Production Companies</p>
+          <button
+            className="bg-gray-400/10 text-gray-500 rounded-full my-6 p-2 flex items-center justify-center gap-2 text-small cursor-pointer hover:bg-gray-400/20 transition duration-200 ease-in"
+            onClick={() => handleSave()}
+          >
+            Add to watchList <AiFillHeart />
+          </button>
+          <p className="text-gray-300 mt-4 text-small">Production Companies</p>
           <Swiper
             // install Swiper modules
             spaceBetween={10}
@@ -84,7 +98,7 @@ const MovieDetail = ({ movieData }) => {
               {movieData.productionCompanies.map((company) => (
                 <SwiperSlide>
                   <li
-                    className="text-gray-500 p-2 text-small"
+                    className="text-gray-400 p-2 text-small"
                     key={Math.random()}
                   >
                     -{company.name}
@@ -98,15 +112,18 @@ const MovieDetail = ({ movieData }) => {
           <div className="w-full h-fit p-1 flex items-center justify-start gap-10 mt-6">
             <div className="w-fit h-full flex flex-col justify-center items-center">
               <p className="text-x-medium text-gray-300">
-                {movieData.averageRating
-                  ? movieData.averageRating
-                  : "2.5 or above"}
+                ⭐
+                {movieData.averageRating ? (
+                  movieData.averageRating
+                ) : (
+                  <span className="text-small">2.5 or above</span>
+                )}
               </p>
               <span className="text-small text-gray-500">Rating</span>
             </div>
             <div className="w-fit h-full flex flex-col justify-center items-center">
               <p className="text-x-medium text-gray-300">
-                {movieData.budget ? movieData.budget.toLocaleString() : 0}
+                ${movieData.budget ? movieData.budget.toLocaleString() : 0}
               </p>
               <span className="text-small text-gray-500">Budget</span>
             </div>

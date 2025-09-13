@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import Main from "../store/main";
 import { FiHeart } from "react-icons/fi";
 import ImageSkeleton from "./Skeleton/ImageSkeleton";
+import { PosterImage } from "../assets";
+
 
 const MovieResult = ({ result }) => {
   const { handleSaveMovie, handleToggleModal, modalShown } = Main();
@@ -13,7 +15,7 @@ const MovieResult = ({ result }) => {
   }, [modalShown]);
 
   return (
-    <li className="w-44 md:w-48 h-60 bg-dark relative p-1 rounded-2xl cursor-pointer overflow-hidden">
+    <li className="w-40 md:w-48 h-60 bg-dark relative p-1 rounded-2xl cursor-pointer overflow-hidden">
       <Link to={`/movie/${result.id}`} state={{ result }}>
         <div className="w-full h-fit relative z-10">
           <button

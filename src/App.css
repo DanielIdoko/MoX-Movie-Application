@@ -118,6 +118,9 @@ span{
     color: var(--primary-color);
 } */
 
+.breadcrumb-text{
+  @apply text-small px-1
+}
 .category-button {
   padding: 5px 10px;
   font-size: 14px;

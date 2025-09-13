@@ -6,57 +6,71 @@ const Main = create((set, get) => ({
   searchBarVisible: true,
   savedMovies: [],
   movieSaved: false,
+
   handleSearch: (navigate) => {
     const { searchTerm } = get();
     if (!searchTerm.trim()) return;
-
     navigate(`/search/${encodeURIComponent(searchTerm)}`);
     set({ searchTerm: "" });
   },
+
   handleChange: (value) => {
     set({ searchTerm: value });
   },
+
   handleToggleModal: () => {
     const { modalShown } = get();
     set({ modalShown: !modalShown });
   },
+
   handleToggleSearchBar: () => {
     const { searchBarVisible } = get();
     set({ searchBarVisible: !searchBarVisible });
   },
+
   handleSaveMovie: (movie) => {
-    const { savedMovies, movieSaved, modalShown } = get();
-    const findMovie = savedMovies.find((saved_movie) => saved_movie === movie);
+    const { savedMovies } = get();
 
-    // Initialise empty savedmovies Arrray
+    // Check if the movie is already saved. Using the unique 'id' for this.
+    const isMovieAlreadySaved = savedMovies.some(
+      (saved_movie) => saved_movie.id === movie.id
+    );
+
     let updatedMovies;
-    // If the movie is already in our storage, don't add it to the savedMovies array else update it
-    if (findMovie) updatedMovies = [...(savedMovies || [])];
-    else updatedMovies = [...(savedMovies || []), movie];
 
-    // Save to store
+    if (isMovieAlreadySaved) {
+      // Do not proceed with updating the array if the movie has been saved.
+      set({ modalShown: true, movieSaved: true });
+      return;
+    } else {
+      // If the movie has not yet been saved, add it to the array.
+      updatedMovies = [...savedMovies, movie];
+    }
+
+    // Update the state
     set({
       savedMovies: updatedMovies,
-      movieSaved: !movieSaved,
-      modalShown: !modalShown,
+      movieSaved: true,
+      modalShown: true,
     });
 
-    // Persist to localStorage
+    // Save to local storage
     localStorage.setItem("savedMovies", JSON.stringify(updatedMovies));
   },
+
   getSavedMovies: () => {
-    const { savedMovies } = get();
     const storedMovies = localStorage.getItem("savedMovies");
-    // Only update our savedMovies if we successfully got data from storedMovies
-    if (storedMovies) set({ savedMovies: JSON.parse(storedMovies) });
+    if (storedMovies) {
+      set({ savedMovies: JSON.parse(storedMovies) });
+    }
   },
+
   // Delete saved movie function
   handleDeleteMovie: (movieId) => {
     const { savedMovies } = get();
     const updatedMovies = savedMovies.filter((m) => m.id !== movieId);
 
     set({ savedMovies: updatedMovies });
-
     localStorage.setItem("savedMovies", JSON.stringify(updatedMovies));
   },
 }));

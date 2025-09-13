@@ -23,17 +23,17 @@ const categories = ["Action", "Drama", "Comedy", "Animation"];
 export default function Home() {
   const [selectedCategory, setSelectedCategory] = useState("Action");
   const {
-    fetchMovies,
+    fetchPopularMovies,
     filterMovies,
     filteredMovies,
-    movies,
+    popularMovies,
     isLoading,
     error: errorMessage,
   } = useFetchMovies();
 
   // FetchMoviesData function is independent on itself/no dependencies
   useEffect(() => {
-    fetchMovies();
+    fetchPopularMovies();
   }, []);
 
   // Call filterMovies(depends on a selected category) and fetchMovies(Runs on every load of the app) function
@@ -77,7 +77,7 @@ export default function Home() {
               disableOnInteraction: false,
             }}
           >
-            {movies?.slice(0, 10).map((movie) => (
+            {popularMovies?.slice(0, 10).map((movie) => (
               <SwiperSlide key={uuid4()}>
                 <Link
                   to={`/movie/${movie.id}`}
@@ -109,8 +109,8 @@ export default function Home() {
         <div className="w-full h-full p-3">
           <Suspense fallback={<Spinner />}>
             {errorMessage ? (
-              <p className="text-center text-md text-base-color">
-                An Error occured, please try again
+              <p className="text-center text-md text-red-500">
+                An unexpected Error occured
               </p>
             ) : isLoading ? (
               <Spinner />
@@ -129,7 +129,7 @@ export default function Home() {
                   },
                 }}
               >
-                {movies?.slice(0, 15).map((movie) => (
+                {popularMovies?.slice(0, 15).map((movie) => (
                   <>
                     <SwiperSlide key={uuid4()} className="w-fit h-full p-2">
                       <MovieCard
@@ -164,8 +164,8 @@ export default function Home() {
           ))}
         </nav>
         {errorMessage ? (
-          <p className="text-center text-md text-white">
-            An Error occured, please try again
+          <p className="text-center text-md text-red-500">
+            An unexpected Error occured
           </p>
         ) : isLoading ? (
           <Spinner />
