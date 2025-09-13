@@ -49,7 +49,7 @@ const SearchPage = () => {
 
   return (
     <div className="w-full p-3 h-full overflow-auto bg-dark">
-      <div className="w-full h-fit flex items-center justify-start md:px-5 md:py-5 md:mt-20 fixed top-0 left-0 md:left-4 z-50">
+      <div className="w-full h-fit flex items-center justify-start md:px-5 mt-4 md:mt-0 md:py-5 md:mt-20 fixed top-0 left-0 md:left-4 z-50">
         <SearchInput />
       </div>
       {!term && (
@@ -67,7 +67,7 @@ const SearchPage = () => {
           <p className="text-medium text-gray-300">Search For Something</p>
         </div>
       )}
-      <div className="mt-5 px-1 w-full h-full md:mt-40 ">
+      <div className="mt-20 px-1 w-full h-full md:mt-40 ">
         {term && (
           <>
             <p className="text-md font-bold text-white p-1 md:pl-6">
@@ -79,23 +79,22 @@ const SearchPage = () => {
             </p>
           </>
         )}
-        {term && (
-          <ul className="w-full grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 md:gap-1 mt-5 md:pl-6">
-            {searchResults.length > 0 ? (
-              searchResults.map((result) => (
+        {term &&
+          (searchResults.length > 0 ? (
+            <ul className="w-full grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 content-center px-3 py-2 md:p-6 gap-6 mt-5">
+              {searchResults.map((result) => (
                 <MovieResult
                   key={Math.random()}
                   result={result.item}
                   state={result}
                 />
-              ))
-            ) : (
-              <p className="text-white p-3 text-small">
-                No results was found for that movie
-              </p>
-            )}
-          </ul>
-        )}
+              ))}
+            </ul>
+          ) : (
+            <p className="text-white p-3 text-small">
+              No results was found for that movie
+            </p>
+          ))}
       </div>
       {/* Footer here */}
       <Footer />

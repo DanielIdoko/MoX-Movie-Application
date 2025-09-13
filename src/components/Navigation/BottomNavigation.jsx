@@ -4,6 +4,7 @@ import { Link, NavLink } from "react-router-dom";
 import Main from "../../store/main";
 import { v4 as uuid4 } from "uuid";
 import { LiaHomeSolid } from "react-icons/lia";
+import { FiSearch } from "react-icons/fi";
 
 // The bottom's navigation's data
 const navs = [
@@ -18,6 +19,12 @@ const navs = [
     title: "Saved",
     path: "/savedpage",
     icon: <BiCollection />,
+  },
+  {
+    id: 2,
+    title: "Search",
+    path: "/search",
+    icon: <FiSearch />,
   },
 ];
 
@@ -34,7 +41,7 @@ const BottomNavigation = () => {
             onClick={() => setActiveNav(navLink.title)}
             className="nav-link"
             style={({ isActive }) => ({
-              color: isActive ? "#4750ff" : "#555",
+              color: isActive ? "#fff" : "#555",
             })}
           >
             <span className="text-xl md:text-md md:hidden block">
@@ -43,9 +50,6 @@ const BottomNavigation = () => {
             <span className="hidden md:block">{navLink.title}</span>
           </NavLink>
         ))}
-        <Link className="nav-link" to="/search">
-          <BiSearch className="text-xl" />
-        </Link>
       </nav>
     </div>
   );
