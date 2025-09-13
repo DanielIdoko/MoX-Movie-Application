@@ -1,4 +1,397 @@
 [
+    {
+        "id": "tt26581740",
+        "url": "https:\/\/www.imdb.com\/title\/tt26581740\/",
+        "primaryTitle": "Weapons",
+        "originalTitle": "Weapons",
+        "type": "movie",
+        "description": "When all but one child from the same class mysteriously vanish on the same night at exactly the same time, a community is left questioning who or what is behind their disappearance.",
+        "primaryImage": "https:\/\/m.media-amazon.com\/images\/M\/MV5BNTBhNWJjZWItYzY3NS00M2NkLThmOWYtYTlmNzBmN2UxZWFjXkEyXkFqcGc@.jpg",
+        "thumbnails": [
+            {
+                "url": "https:\/\/m.media-amazon.com\/images\/M\/MV5BNTBhNWJjZWItYzY3NS00M2NkLThmOWYtYTlmNzBmN2UxZWFjXkEyXkFqcGc@._V1_QL75_UX100_CR0,0,100,148_.jpg",
+                "width": 100,
+                "height": 148
+            },
+            {
+                "url": "https:\/\/m.media-amazon.com\/images\/M\/MV5BNTBhNWJjZWItYzY3NS00M2NkLThmOWYtYTlmNzBmN2UxZWFjXkEyXkFqcGc@._V1_QL75_UX280_CR0,0,280,414_.jpg",
+                "width": 280,
+                "height": 414
+            },
+            {
+                "url": "https:\/\/m.media-amazon.com\/images\/M\/MV5BNTBhNWJjZWItYzY3NS00M2NkLThmOWYtYTlmNzBmN2UxZWFjXkEyXkFqcGc@._V1_QL75_UX380_CR0,0,380,562_.jpg",
+                "width": 380,
+                "height": 562
+            }
+        ],
+        "trailer": null,
+        "contentRating": "R",
+        "startYear": 2025,
+        "endYear": null,
+        "releaseDate": "2025-08-08",
+        "interests": [
+            "Dark Comedy",
+            "Psychological Horror",
+            "Supernatural Horror",
+            "Witch Horror",
+            "Horror",
+            "Mystery"
+        ],
+        "countriesOfOrigin": [
+            "US"
+        ],
+        "externalLinks": [
+            "https:\/\/amzn.to\/45rTpoV",
+            "https:\/\/www.warnerbros.com\/movies\/weapons"
+        ],
+        "spokenLanguages": [
+            "en"
+        ],
+        "filmingLocations": [
+            "Atlanta, Georgia, USA"
+        ],
+        "productionCompanies": [
+            {
+                "id": "co0046718",
+                "name": "New Line Cinema"
+            },
+            {
+                "id": "co1090055",
+                "name": "Domain Entertainment (II)"
+            },
+            {
+                "id": "co1124458",
+                "name": "Subconscious"
+            }
+        ],
+        "budget": 38000000,
+        "grossWorldwide": 239055961,
+        "genres": [
+            "Horror",
+            "Mystery"
+        ],
+        "isAdult": false,
+        "runtimeMinutes": 128,
+        "averageRating": 7.9,
+        "numVotes": 58926,
+        "metascore": 81
+    },
+    {
+        "id": "tt5950044",
+        "url": "https:\/\/www.imdb.com\/title\/tt5950044\/",
+        "primaryTitle": "Superman",
+        "originalTitle": "Superman",
+        "type": "movie",
+        "description": "Superman must reconcile his alien Kryptonian heritage with his human upbringing as reporter Clark Kent. As the embodiment of truth, justice and the human way he soon finds himself in a world that views these as old-fashioned.",
+        "primaryImage": "https:\/\/m.media-amazon.com\/images\/M\/MV5BOGMwZGJiM2EtMzEwZC00YTYzLWIxNzYtMmJmZWNlZjgxZTMwXkEyXkFqcGc@.jpg",
+        "thumbnails": [
+            {
+                "url": "https:\/\/m.media-amazon.com\/images\/M\/MV5BOGMwZGJiM2EtMzEwZC00YTYzLWIxNzYtMmJmZWNlZjgxZTMwXkEyXkFqcGc@._V1_QL75_UX100_CR0,0,100,148_.jpg",
+                "width": 100,
+                "height": 148
+            },
+            {
+                "url": "https:\/\/m.media-amazon.com\/images\/M\/MV5BOGMwZGJiM2EtMzEwZC00YTYzLWIxNzYtMmJmZWNlZjgxZTMwXkEyXkFqcGc@._V1_QL75_UX280_CR0,0,280,414_.jpg",
+                "width": 280,
+                "height": 414
+            },
+            {
+                "url": "https:\/\/m.media-amazon.com\/images\/M\/MV5BOGMwZGJiM2EtMzEwZC00YTYzLWIxNzYtMmJmZWNlZjgxZTMwXkEyXkFqcGc@._V1_QL75_UX380_CR0,0,380,562_.jpg",
+                "width": 380,
+                "height": 562
+            }
+        ],
+        "trailer": "https:\/\/www.youtube.com\/watch?v=uhUht6vAsMY",
+        "contentRating": "PG-13",
+        "startYear": 2025,
+        "endYear": null,
+        "releaseDate": "2025-07-11",
+        "interests": [
+            "Action Epic",
+            "Adventure Epic",
+            "Sci-Fi Epic",
+            "Superhero",
+            "Action",
+            "Adventure",
+            "Sci-Fi"
+        ],
+        "countriesOfOrigin": [
+            "US"
+        ],
+        "externalLinks": [
+            "https:\/\/www.supermanmovie.net\/"
+        ],
+        "spokenLanguages": [
+            "en"
+        ],
+        "filmingLocations": [
+            "Cincinnati, Ohio, USA"
+        ],
+        "productionCompanies": [
+            {
+                "id": "co1064049",
+                "name": "DC Studios"
+            },
+            {
+                "id": "co1090055",
+                "name": "Domain Entertainment (II)"
+            },
+            {
+                "id": "co0690814",
+                "name": "Troll Court Entertainment"
+            }
+        ],
+        "budget": 225000000,
+        "grossWorldwide": 612263305,
+        "genres": [
+            "Action",
+            "Adventure",
+            "Sci-Fi"
+        ],
+        "isAdult": false,
+        "runtimeMinutes": 129,
+        "averageRating": 7.4,
+        "numVotes": 224959,
+        "metascore": 68
+    },
+    {
+        "id": "tt31567422",
+        "url": "https:\/\/www.imdb.com\/title\/tt31567422\/",
+        "primaryTitle": "Night Always Comes",
+        "originalTitle": "Night Always Comes",
+        "type": "movie",
+        "description": "Risking everything to secure a future for herself and her brother, Lynette sets out on a dangerous odyssey, confronting her own dark past over the course of one propulsive night.",
+        "primaryImage": "https:\/\/m.media-amazon.com\/images\/M\/MV5BNjI4NDI1ZDEtN2Q5Zi00ZGU4LWJmNzctNjI1NzdlOWQxMGNkXkEyXkFqcGc@.jpg",
+        "thumbnails": [
+            {
+                "url": "https:\/\/m.media-amazon.com\/images\/M\/MV5BNjI4NDI1ZDEtN2Q5Zi00ZGU4LWJmNzctNjI1NzdlOWQxMGNkXkEyXkFqcGc@._V1_QL75_UX100_CR0,0,100,148_.jpg",
+                "width": 100,
+                "height": 148
+            },
+            {
+                "url": "https:\/\/m.media-amazon.com\/images\/M\/MV5BNjI4NDI1ZDEtN2Q5Zi00ZGU4LWJmNzctNjI1NzdlOWQxMGNkXkEyXkFqcGc@._V1_QL75_UX280_CR0,0,280,414_.jpg",
+                "width": 280,
+                "height": 414
+            },
+            {
+                "url": "https:\/\/m.media-amazon.com\/images\/M\/MV5BNjI4NDI1ZDEtN2Q5Zi00ZGU4LWJmNzctNjI1NzdlOWQxMGNkXkEyXkFqcGc@._V1_QL75_UX380_CR0,0,380,562_.jpg",
+                "width": 380,
+                "height": 562
+            }
+        ],
+        "trailer": null,
+        "contentRating": "R",
+        "startYear": 2025,
+        "endYear": null,
+        "releaseDate": "2025-08-15",
+        "interests": [
+            "Crime",
+            "Drama",
+            "Thriller"
+        ],
+        "countriesOfOrigin": [
+            "US",
+            "GB"
+        ],
+        "externalLinks": [],
+        "spokenLanguages": [
+            "en"
+        ],
+        "filmingLocations": [
+            "Portland, Oregon, USA"
+        ],
+        "productionCompanies": [
+            {
+                "id": "co0886903",
+                "name": "Aluna Entertainment"
+            },
+            {
+                "id": "co1086187",
+                "name": "Co Created Media"
+            },
+            {
+                "id": "co0769935",
+                "name": "H2L Media Group"
+            }
+        ],
+        "budget": null,
+        "grossWorldwide": null,
+        "genres": [
+            "Crime",
+            "Drama",
+            "Thriller"
+        ],
+        "isAdult": false,
+        "runtimeMinutes": 108,
+        "averageRating": 5.9,
+        "numVotes": 3282,
+        "metascore": 60
+    },
+    {
+        "id": "tt31868189",
+        "url": "https:\/\/www.imdb.com\/title\/tt31868189\/",
+        "primaryTitle": "Happy Gilmore 2",
+        "originalTitle": "Happy Gilmore 2",
+        "type": "movie",
+        "description": "Revisit Happy Gilmore\u0027s golf career after his win in the Tour Championship.",
+        "primaryImage": "https:\/\/m.media-amazon.com\/images\/M\/MV5BYTQyNTRmYjItMDBjYi00YWNhLWEwMmQtNzJhODNiNjEzOWJlXkEyXkFqcGc@.jpg",
+        "thumbnails": [
+            {
+                "url": "https:\/\/m.media-amazon.com\/images\/M\/MV5BYTQyNTRmYjItMDBjYi00YWNhLWEwMmQtNzJhODNiNjEzOWJlXkEyXkFqcGc@._V1_QL75_UX100_CR0,0,100,148_.jpg",
+                "width": 100,
+                "height": 148
+            },
+            {
+                "url": "https:\/\/m.media-amazon.com\/images\/M\/MV5BYTQyNTRmYjItMDBjYi00YWNhLWEwMmQtNzJhODNiNjEzOWJlXkEyXkFqcGc@._V1_QL75_UX280_CR0,0,280,414_.jpg",
+                "width": 280,
+                "height": 414
+            },
+            {
+                "url": "https:\/\/m.media-amazon.com\/images\/M\/MV5BYTQyNTRmYjItMDBjYi00YWNhLWEwMmQtNzJhODNiNjEzOWJlXkEyXkFqcGc@._V1_QL75_UX380_CR0,0,380,562_.jpg",
+                "width": 380,
+                "height": 562
+            }
+        ],
+        "trailer": "https:\/\/www.youtube.com\/watch?v=alBuSbDUSig",
+        "contentRating": "PG-13",
+        "startYear": 2025,
+        "endYear": null,
+        "releaseDate": "2025-07-25",
+        "interests": [
+            "Farce",
+            "High-Concept Comedy",
+            "Quest",
+            "Raunchy Comedy",
+            "Slapstick",
+            "Comedy",
+            "Sport"
+        ],
+        "countriesOfOrigin": [
+            "US"
+        ],
+        "externalLinks": [],
+        "spokenLanguages": [
+            "en"
+        ],
+        "filmingLocations": [
+            "Fiddler\u0027s Elbow Country Club, 11 Rattlesnake Bridge Rd, Bedminster, New Jersey, USA"
+        ],
+        "productionCompanies": [
+            {
+                "id": "co0144901",
+                "name": "Netflix"
+            },
+            {
+                "id": "co0059609",
+                "name": "Happy Madison Productions"
+            },
+            {
+                "id": "co1107394",
+                "name": "Pro Shop Studios"
+            }
+        ],
+        "budget": 30000000,
+        "grossWorldwide": null,
+        "genres": [
+            "Comedy",
+            "Sport"
+        ],
+        "isAdult": false,
+        "runtimeMinutes": 114,
+        "averageRating": 6.1,
+        "numVotes": 85107,
+        "metascore": 52
+    },
+    {
+        "id": "tt3402138",
+        "url": "https:\/\/www.imdb.com\/title\/tt3402138\/",
+        "primaryTitle": "The Naked Gun",
+        "originalTitle": "The Naked Gun",
+        "type": "movie",
+        "description": "Only one man has the particular set of skills - to lead Police Squad and save the world.",
+        "primaryImage": "https:\/\/m.media-amazon.com\/images\/M\/MV5BNGFlNDhkNzItZjgxNC00OGYzLWFjZDAtZTJmNDY5ZmEyZDc0XkEyXkFqcGc@.jpg",
+        "thumbnails": [
+            {
+                "url": "https:\/\/m.media-amazon.com\/images\/M\/MV5BNGFlNDhkNzItZjgxNC00OGYzLWFjZDAtZTJmNDY5ZmEyZDc0XkEyXkFqcGc@._V1_QL75_UX100_CR0,0,100,148_.jpg",
+                "width": 100,
+                "height": 148
+            },
+            {
+                "url": "https:\/\/m.media-amazon.com\/images\/M\/MV5BNGFlNDhkNzItZjgxNC00OGYzLWFjZDAtZTJmNDY5ZmEyZDc0XkEyXkFqcGc@._V1_QL75_UX280_CR0,0,280,414_.jpg",
+                "width": 280,
+                "height": 414
+            },
+            {
+                "url": "https:\/\/m.media-amazon.com\/images\/M\/MV5BNGFlNDhkNzItZjgxNC00OGYzLWFjZDAtZTJmNDY5ZmEyZDc0XkEyXkFqcGc@._V1_QL75_UX380_CR0,0,380,562_.jpg",
+                "width": 380,
+                "height": 562
+            }
+        ],
+        "trailer": null,
+        "contentRating": "PG-13",
+        "startYear": 2025,
+        "endYear": null,
+        "releaseDate": "2025-08-01",
+        "interests": [
+            "Bumbling Detective",
+            "Parody",
+            "Satire",
+            "Slapstick",
+            "Action",
+            "Comedy",
+            "Crime"
+        ],
+        "countriesOfOrigin": [
+            "US"
+        ],
+        "externalLinks": [
+            "https:\/\/www.facebook.com\/NakedGunMovie\/",
+            "https:\/\/www.instagram.com\/nakedgunmovie\/"
+        ],
+        "spokenLanguages": [
+            "en"
+        ],
+        "filmingLocations": [
+            "Martin Luther King Jr Federal Building, Atlanta, Georgia, USA"
+        ],
+        "productionCompanies": [
+            {
+                "id": "co0023400",
+                "name": "Paramount Pictures"
+            },
+            {
+                "id": "co1090055",
+                "name": "Domain Entertainment (II)"
+            },
+            {
+                "id": "co0065872",
+                "name": "Fuzzy Door Productions"
+            }
+        ],
+        "budget": 42000000,
+        "grossWorldwide": 95906054,
+        "genres": [
+            "Action",
+            "Comedy",
+            "Crime"
+        ],
+        "isAdult": false,
+        "runtimeMinutes": 85,
+        "averageRating": 7,
+        "numVotes": 27957,
+        "metascore": 75
+    },
+    {
+        "id": "tt28996126",
+        "url": "https:\/\/www.imdb.com\/title\/tt28996126\/",
+        "primaryTitle": "Nobody 2",
+        "originalTitle": "Nobody 2",
+        "type": "movie",
+        "description": "Suburban dad Hutch Mansell, a former lethal assassin, is pulled back into his violent past after thwarting a home invasion, setting off a chain of events that unravels secrets about his wife Becca\u0027s past and his own.",
+        "primaryImage": "https:\/\/m.media-amazon.com\/images\/M\/MV5BOWViZjhjYjQtZDI1MC00MWMyLTlhZTktNmIzY2Y0ZWVkMWFhXkEyXkFqcGc@.jpg",
+        "thumbnails": [
+            {
+                "url": "https:\/\/m.media-amazon.com\/images\/M\/MV5BOWViZjhjYjQtZDI1MC00MWMyLTlhZTktNmIzY2Y0ZWVkMWFhXkEyXkFqcGc@._V1_QL75_UX100_CR0,0,100,148_.jpg",
                 "width": 100,
                 "height": 148
             },
