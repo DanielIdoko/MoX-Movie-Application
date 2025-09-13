@@ -11,17 +11,17 @@ const Modal = lazy(() => import("../components/Modal/Modal"))
 const Layout = () => {
   const { modalShown, handleToggleModal, getSavedMovies } = Main();
 
-  useEffect(() => {
-    let timer;
-    if (modalShown) {
-      // Auto close modal after 4 seconds
-      timer = setTimeout(() => {
-        handleToggleModal();
-      }, 4000)
-    }
+  // useEffect(() => {
+  //   let timer;
+  //   if (modalShown) {
+  //     // Auto close modal after 4 seconds
+  //     timer = setTimeout(() => {
+  //       handleToggleModal();
+  //     }, 4000)
+  //   }
 
-    return () => clearTimeout(timer)
-  }, [modalShown, handleToggleModal])
+  //   return () => clearTimeout(timer)
+  // }, [modalShown, handleToggleModal])
 
   useEffect(() => {
     getSavedMovies();
@@ -33,9 +33,9 @@ const Layout = () => {
       {/* Navbar */}
       <Navbar />
       {/* Success Modal for message on adding a movie to the saved page */}
-      <Suspense>
+      {/* <Suspense fallback={""}>  */}
         {modalShown && <Modal />}
-      </Suspense>
+      {/* </Suspense> */}
       {/* Outlet or Main data */}
       <Outlet />
       {/* Bottom Navigation */}

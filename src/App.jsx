@@ -16,6 +16,7 @@ const App = () => {
       <Routes>
         <Route path='/' element={<Layout />}>
           <Route index element={<Home />} />
+          <Route path='/search' element={<SearchPage />} />
           <Route path='/search/:term' element={<SearchPage />} />
           <Route path='/movie/:movie_id' element={<MovieDescription />} />
           <Route path='/savedpage' element={<SavedPage />} />

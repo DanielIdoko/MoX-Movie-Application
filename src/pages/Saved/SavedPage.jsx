@@ -3,11 +3,10 @@ import Main from "../../store/main";
 const SavedMovie = lazy(() => import("../../components/Saved/SavedMovie"));
 const Spinner = lazy(() => import("../../components/Spinner"));
 import { v4 as uuid } from "uuid";
-import SearchInput from "../../components/SearchInput";
 import Footer from "../../components/Footer";
 
 const SavedPage = () => {
-  const { savedMovies, getSavedMovies, searchBarVisible } = Main();
+    const { savedMovies, getSavedMovies } = Main();
 
   useEffect(() => {
     // console.log(savedMovies);
@@ -23,47 +22,32 @@ const SavedPage = () => {
 
   return (
     <div className="bg-dark w-full p-3 h-full md:p-13 md:mt-20">
-      {/* Search bar */}
-      {searchBarVisible && (
-        <div className="w-full h-fit fixed top-0 left-0 md:hidden p-2 flex items-center justify-center z-20">
-          <SearchInput />
-        </div>
-      )}
-
-      <h3
-        className={`text-white text-medium p-3 ${
-          searchBarVisible && "mt-13"
-        } md:pl-1`}
-      >
-        Your Saved Movies
-      </h3>
+      <h3 className="text-white text-medium p-3">Your Saved Movies</h3>
 
       {/* Saved movies */}
-      <ul className="w-full p-1 gap-1.5">
+      <ul className="w-full p-1 gap-1.5 h-dvh">
         <Suspense fallback={<Spinner />}>
-          {savedMovies && savedMovies.length > 0 ? (
-            [...savedMovies]
-              .reverse()
-              .map((movie) => (
+          {savedMovies?.length > 0 ? (
+            [...savedMovies].reverse().map((savedmovie) => (
                 <SavedMovie
                   key={uuid()}
-                  movie={movie}
-                  confirmModalShown={activeModalMovieId === movie.id}
+                  movie={savedmovie}
+                  confirmModalShown={activeModalMovieId === savedmovie.id}
                   handleToggleConfirmModal={() =>
                     handleToggleConfirmModal(
-                      activeModalMovieId === movie.id ? null : movie.id
+                      activeModalMovieId === savedmovie.id ? null : savedmovie.id
                     )
                   }
                 />
               ))
           ) : (
             <div className="w-full h-full flex items-center justify-center p-30">
-              <p className="text-gray-400 text-small">No Movies Saved Yet</p>
+              <p className="text-gray-400 text-small">No Movies Saved here Yet</p>
             </div>
           )}
         </Suspense>
       </ul>
-
+      {/* Footer here */}
       <Footer />
     </div>
   );

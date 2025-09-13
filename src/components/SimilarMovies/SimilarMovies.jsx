@@ -25,7 +25,7 @@ const SimilarMovies = ({ movie }) => {
     }, [movie]);
 
     return (
-        <ul className='w-full h-auto mt-2 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 items-center p-3'>
+        <ul className='w-full h-auto mt-2 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 items-center justify-items-center md:justify-items-start md:px-3'>
             {isLoading ? (
                 <Spinner />
             ) : errorMessage ? (

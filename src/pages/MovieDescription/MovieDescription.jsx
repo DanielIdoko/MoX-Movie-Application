@@ -1,12 +1,12 @@
 import React, { useMemo, useState } from "react";
 import { useEffect } from "react";
-import { useLocation, useParams } from "react-router-dom";
+import { Link, useLocation, useParams } from "react-router-dom";
 import Spinner from "../../components/Spinner";
-import MovieDetail from "../../components/MovieDetail";
 import { lazy } from "react";
 import { Suspense } from "react";
 import useFetchMovies from "../../store/useFetchMovies";
-import SearchInput from '../../components/SearchInput'
+import SearchInput from "../../components/SearchInput";
+const MovieDetail = lazy(() => import("../../components/MovieDetail"));
 
 // Help Generate random id's for movies to prevent colliding id's
 import { v4 as uuid4 } from "uuid";
@@ -19,16 +19,14 @@ const SimilarMovies = lazy(() =>
 const MovieDescription = () => {
   // zustand states
   const {
-    fetchAllMovies,
+    fetchPopularMovies,
     filteredMovies,
     fetchMovies,
-    allMovies,
+    popularMovies,
     movies,
     isLoading,
     error: errorMessage,
   } = useFetchMovies();
-
-  const { searchBarVisible } = Main();
 
   const [movieData, setMovieData] = useState(null);
   // Get the state/data from the params function
@@ -37,39 +35,47 @@ const MovieDescription = () => {
 
   // Get the movie data from our state or find from our API's Response data the movie id that matches that of our movie_id
   const movieDescriptionData = useMemo(() => {
-    fetchAllMovies();
-    fetchMovies();
+    // fetchpopularMovies();
+    // fetchMovies();
 
     const movie =
       location.state?.movie ||
       movies.find((movie) => movie.id === movie_id) ||
-      allMovies.find((movie) => movie.id === movie_id);
-    filteredMovies.find((movie) => movie.id === movie_id);
+      popularMovies.find((movie) => movie.id === movie_id) ||
+      filteredMovies.find((movie) => movie.id === movie_id);
 
-    setMovieData(movie);
-  }, [movie_id]);
+    if (movie) {
+      setMovieData(movie);
+      // console.log(movieData);
+    } else {
+      const newMovieData =
+        movies.find((movie) => movie.id === movie_id) ||
+        filteredMovies.find((movie) => movie.id === movie_id) ||
+        popularMovies.find((movie) => movie.id === movie_id);
 
-  useEffect(() => {
-    const newMovieData =
-      movies.find((movie) => movie.id === movie_id) ||
-      filteredMovies.find((movie) => movie.id === movie_id) ||
-      allMovies.find((movie) => movie.id === movie_id);
+      setMovieData(newMovieData);
+    }
+  }, [movie_id, location.state]);
 
-    setMovieData(newMovieData);
-  }, []);
+  // useEffect(() => {
+
+  // }, []);
 
   return (
-    <div className="w-full h-full md:mt-20">
-      {/* Search bar */}
-      {searchBarVisible && (
-        <div className="w-full h-fit fixed top-0 left-0 md:hidden p-2 flex items-center justify-center z-20">
-          <SearchInput />
-        </div>
-      )}
+    <div className="w-full h-full md:mt-20 md:pl-6">
+      {/* BreadCrumbs */}
+        <span className="w-full h-fit py-6 px-3 md:px-6 flex items-center justify-start text-white">
+        <Link to="/" className="breadcrumb-text">
+          Movies
+        </Link>
+        {" / "}
+        <Link to={`/movie/${movie_id}`} className="breadcrumb-text">
+          {movieData?.originalTitle}
+        </Link>
+      </span>
+      {/* Breadcrumbs ends */}
 
-      <div className={`pl-3 md:pl-10 ${
-          searchBarVisible && "mt-13"
-        }`}>
+      <>
         {isLoading ? (
           <Spinner />
         ) : errorMessage ? (
@@ -81,7 +87,7 @@ const MovieDescription = () => {
             <MovieDetail movieData={movieData} key={uuid4()} />
 
             {/* Similar movies section */}
-            <h3 className="p-3 text-white md:text-medium mt-3">
+            <h3 className="px-4 text-white md:text-medium mt-3">
               Similar Movies
             </h3>
             <Suspense fallback={<Spinner />}>
@@ -91,7 +97,7 @@ const MovieDescription = () => {
         ) : (
           <Spinner />
         )}
-      </div>
+      </>
     </div>
   );
 };

@@ -5,13 +5,13 @@ const useFetchMovies = create((set, get) => ({
   error: null,
   isLoading: true,
   movies: [],
-  allMovies: [],
+  popularMovies: [],
   filteredMovies: [],
   fetchMovies: async () => {
     const { error, isLoading } = get();
     try {
       set({ error: null, isLoading: false });
-      fetch("/data/mostPopular.json")
+      fetch("/data/movies.json")
         .then((res) => res.json())
         .then((data) => set({ movies: data }))
         .catch((err) => set({ error: err, isLoading: false }));
@@ -21,14 +21,14 @@ const useFetchMovies = create((set, get) => ({
       set({ error: null, isLoading: false });
     }
   },
-  fetchAllMovies: async () => {
+  fetchPopularMovies: async () => {
     const { error, isLoading } = get();
 
     try {
       set({ error: null, isLoading: false });
-      fetch("/data/movies.json")
+      fetch("/data/mostPopular.json")
         .then((res) => res.json())
-        .then((data) => set({ allMovies: data }))
+        .then((data) => set({ popularMovies: data }))
         .catch((err) => set({ error: err, isLoading: false }));
     } catch (error) {
       set({ error: error, isLoading: false });
@@ -36,7 +36,6 @@ const useFetchMovies = create((set, get) => ({
       set({ error: null, isLoading: false });
     }
   },
-
   filterMovies: async (category) => {
     const { error, isLoading } = get();
 
