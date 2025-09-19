@@ -25,7 +25,7 @@ const SavedPage = () => {
     <div className="bg-dark w-full p-3 h-full md:p-13 md:mt-20">
       <div className="w-full h-fit py-2 flex items-center justify-start">
         <h3 className="text-white text-medium p-3 flex-1">Your Saved Movies</h3>
-        <button className="bg-red-600/5 flex items-center gap-2 justify-center p-2 rounded-md text-red-500 cursor-pointer hover:bg-red-600/10 transition duration-300 ease-in"
+        <button className="bg-red-600/5 flex text-small items-center gap-2 justify-center p-2 rounded-md text-red-500 cursor-pointer hover:bg-red-600/10 transition duration-300 ease-in"
         onClick={() => handleDeleteAllSavedMovie()}>
           <FiTrash /> Clear All
         </button>
