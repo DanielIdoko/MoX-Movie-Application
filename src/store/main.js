@@ -73,6 +73,14 @@ const Main = create((set, get) => ({
     set({ savedMovies: updatedMovies });
     localStorage.setItem("savedMovies", JSON.stringify(updatedMovies));
   },
+  // Delete saved movie function
+  handleDeleteAllSavedMovie: () => {
+    const { savedMovies } = get();
+    const updatedMovies = [];
+
+    set({ savedMovies: updatedMovies });
+    localStorage.setItem("savedMovies", JSON.stringify(updatedMovies));
+  },
 }));
 
 export default Main;

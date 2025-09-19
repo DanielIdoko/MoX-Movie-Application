@@ -17,7 +17,7 @@ const SimilarMovies = ({ movie }) => {
         options
       );
       const data = await response.json();
-      console.log(data.results);
+      // console.log(data.results);
       setSimilarMovies(data.results);
       setIsLoading(false);
     } catch (error) {
@@ -39,7 +39,7 @@ const SimilarMovies = ({ movie }) => {
         <Spinner />
       ) : errorMessage ? (
         <p className="text-red-600 text-small">{errorMessage}</p>
-      ) : similarMovies.length > 0 ? (
+      ) : similarMovies?.length > 0 ? (
         similarMovies
           .slice(0, 5)
           .map((similarMovie) => (

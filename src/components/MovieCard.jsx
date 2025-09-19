@@ -9,12 +9,12 @@ import { ImageBaseUrl } from "../utils/API";
 
 export default function MovieCard({ movieData, movieState }) {
   // Saved movies state gotten from Main store to track interaction with saved movies
-  const { handleSaveMovie, savedMovies, handleToggleModal, modalShown } =
+  const { handleSaveMovie, savedMovies, handleHideModal, modalShown } =
     Main();
 
   const handleSave = useCallback(() => {
     handleSaveMovie(movieData);
-    handleToggleModal();
+    // handleHideModal();
   }, [modalShown]);
 
   return (
