@@ -30,7 +30,7 @@ const MovieDescription = () => {
         options
       );
       const data = await response.json();
-      console.log(data);
+      // console.log(data);
       setMovieDetails(data)
     } catch (error) {
       setErrorMessage(error);
