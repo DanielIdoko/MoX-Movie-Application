@@ -34,7 +34,6 @@ const movieGenres = [
   { id: 27, name: "Horror", color: "#2c3e50" },
   { id: 10402, name: "Music", color: "#e67e22" },
   { id: 9648, name: "Mystery", color: "#7f8c8d" },
-  { id: 10749, name: "Romance", color: "#e84393" },
   { id: 878, name: "Science Fiction", color: "#00cec9" },
   { id: 10770, name: "TV Movie", color: "#95a5a6" },
   { id: 53, name: "Thriller", color: "#2ecc71" },
