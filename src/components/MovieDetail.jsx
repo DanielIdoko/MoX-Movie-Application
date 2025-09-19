@@ -9,81 +9,76 @@ import { PosterImage } from "../assets";
 import Main from "../store/main";
 import ImageSkeleton from "./Skeleton/ImageSkeleton";
 import { AiFillHeart } from "react-icons/ai";
+import { ImageBaseUrl } from "../utils/API";
 
-const MovieDetail = ({ movieData }) => {
+const MovieDetail = ({ movieDetails }) => {
   // This state will help us toggle for more details
   const [moreDetailsShown, setMoreDetailsShown] = useState(false);
-  // const { handleSaveMovie } = Main();
 
   // Saved movies state gotten from Main store to track interaction with saved movies
   const { handleSaveMovie, handleToggleModal, modalShown } = Main();
 
+  // Call handleSave movie function 
   const handleSave = useCallback(() => {
-    handleSaveMovie(movieData);
+    handleSaveMovie(movieDetails);
     handleToggleModal();
   }, [modalShown]);
 
   let Image = (
     <img
-      src={
-        decodeURIComponent(movieData.primaryImage).length > 10
-          ? movieData.primaryImage
-          : PosterImage
-      }
-      alt={movieData.originalTitle}
+      src={ImageBaseUrl + movieDetails.poster_path ? ImageBaseUrl + movieDetails.poster_path : PosterImage}
+      className="w-screen h-[500px] md:w-full md:h-full lg:w-[500px] lg:h-[550px]"
+      alt={movieDetails.original_title}
     />
   );
+
   return (
     <div className="w-full h-full p-2">
-      <div className="w-full h-full block md:grid md:grid-cols-3 md:gap-10">
+      <div className="w-full h-full block md:grid md:grid-cols-3 md:gap-5">
         {/* Image section */}
         <div className="w-fit h-fit overflow-hidden rounded-2xl shadow-xl">
           <Suspense fallback={<ImageSkeleton />}>{Image}</Suspense>
         </div>
         {/* Text section */}
         <div className="w-full h-full col-span-2 p-2">
-          <ul className="w-full h-fit p-0 flex items-center justify-start mt-6 gap-3 relative">
-            {movieData.genres.map((genre) => (
-              <li
-                key={genre + "id"}
-                className="w-fit h-fit text-small text-gray-600"
-              >
-                {genre.toUpperCase()}
-              </li>
-            ))}
-            {/* 
-            <button
-                className="text-gray-500 p-1 text-medium flex items-center justify-center absolute right-0 transition duration-200 ease-in rounded-full cursor-pointer hover:bg-gray-400/10 hover:text-white"
-              onClick={() => handleSaveMovie()}
-            >
-              <FiHeart />
-            </button> */}
-          </ul>
-          <span className="w-full h-fit flex items-center justify-start mt-6 gap-2">
+          <span className="w-full h-fit flex flex-col justify-start md:items-start py-3 gap-2">
             <h3 className="text-x-medium md:text-large text-white flex-1">
-              {movieData.originalTitle}
+              {movieDetails.original_title}
             </h3>
-            {movieData.isAdult && (
+            {movieDetails.adult && (
               <p className="p-1 w-fit h-fit mt-1 rounded-sm bg-gray-800 text-x-small text-red-400">
                 +18
               </p>
             )}
-            <p className="p-1 w-fit h-fit mt-1 rounded-sm bg-gray-800 text-x-small text-gray-500">
-              {movieData.contentRating || "R"}
-            </p>
+            <ul className="w-fit h-full p-0 flex items-center justify-start mt-2 gap-3 relative">
+              {movieDetails.genres?.map((genre) => (
+                <li
+                  key={genre.id}
+                  className="w-fit h-fit text-small text-gray-600 font-bold"
+                >
+                  {genre.name.toUpperCase()}
+                </li>
+              ))}
+            </ul>
+            {/* <p className="p-1 w-fit h-fit mt-1 rounded-sm bg-gray-800 text-x-small text-gray-500">
+              {movieDetails.contentRating || "R"}
+            </p> */}
           </span>
-          <p className="text-gray-400 text-small pt-3">
-            {movieData.description
-              ? movieData.description
+          <p className="text-gray-500 text-small pt-3 mt-1">
+            {movieDetails.overview
+              ? movieDetails.overview
               : "No description for this movie"}
           </p>
           <button
-            className="bg-gray-400/10 text-gray-500 rounded-full my-6 p-2 flex items-center justify-center gap-2 text-small cursor-pointer hover:bg-gray-400/20 transition duration-200 ease-in"
+            className="text-gray-500 rounded-full my-6 p-2 flex items-center justify-center gap-2 text-small cursor-pointer hover:bg-gray-400/10 transition duration-200 ease-in"
             onClick={() => handleSave()}
           >
-            Add to watchList <AiFillHeart />
+            <AiFillHeart />
+            Add to watchList
           </button>
-          <p className="text-gray-300 mt-4 text-small">Production Companies</p>
+          <p className="text-gray-300 mt-15 text-small font-semibold">
+            Production Companies
+          </p>
           <Swiper
             // install Swiper modules
             spaceBetween={10}
@@ -94,14 +89,21 @@ const MovieDetail = ({ movieData }) => {
               },
             }}
           >
-            <ul className="w-full h-fit flex items-center justify-safe-start gap-3 overflow-auto">
-              {movieData.productionCompanies.map((company) => (
+            <ul className="w-full h-fit flex items-center justify-safe-start gap-10 overflow-auto">
+              {movieDetails.production_companies?.map((company) => (
                 <SwiperSlide>
                   <li
-                    className="text-gray-400 p-2 text-small"
+                    className="text-gray-500 p-2 text-small flex justify-start items-center gap-2"
                     key={Math.random()}
                   >
-                    -{company.name}
+                    <img
+                      src={company.logo_path ? ImageBaseUrl + company.logo_path : PosterImage}
+                      alt={company.logo_path}
+                      width={40}
+                      height={40}
+                      className="object-contain"
+                    />
+                    {company.name}
                   </li>
                 </SwiperSlide>
               ))}
@@ -109,12 +111,11 @@ const MovieDetail = ({ movieData }) => {
           </Swiper>
 
           {/* Numbers section */}
-          <div className="w-full h-fit p-1 flex items-center justify-start gap-10 mt-6">
+          <div className="w-full h-fit p-1 flex items-center justify-center md:justify-start gap-9 md:gap-17 mt-10">
             <div className="w-fit h-full flex flex-col justify-center items-center">
               <p className="text-x-medium text-gray-300">
-                ⭐
-                {movieData.averageRating ? (
-                  movieData.averageRating
+                {movieDetails.vote_average ? (
+                  movieDetails.vote_average.toFixed(1)
                 ) : (
                   <span className="text-small">2.5 or above</span>
                 )}
@@ -123,15 +124,16 @@ const MovieDetail = ({ movieData }) => {
             </div>
             <div className="w-fit h-full flex flex-col justify-center items-center">
               <p className="text-x-medium text-gray-300">
-                ${movieData.budget ? movieData.budget.toLocaleString() : 0}
+                $
+                {movieDetails.budget ? movieDetails.budget.toLocaleString() : 0}
               </p>
-              <span className="text-small text-gray-500">Budget</span>
+              <span className="text-small text-gray-500 font-bold">Budget</span>
             </div>
             <div className="w-fit h-full flex flex-col justify-center items-center">
               <p className="text-x-medium text-gray-300">
-                {movieData.startYear}
+                {movieDetails.release_date}
               </p>
-              <span className="text-small text-gray-500">Year</span>
+              <span className="text-small text-gray-500">Release Date</span>
             </div>
           </div>
 
@@ -146,31 +148,26 @@ const MovieDetail = ({ movieData }) => {
           {moreDetailsShown && (
             <div className="w-full h-fit p-0 mt-2">
               <p className="info">
-                RunTime: <span>{movieData.runtimeMinutes} minutes</span>
+                RunTime: <span>{movieDetails.runtime} minutes</span>
               </p>
               <p className="info">
-                ReleaseDate: <span>{movieData.releaseDate}</span>
+                ReleaseDate: <span>{movieDetails.release_date}</span>
               </p>
-              <p className="info">
-                Languages:{" "}
-                {movieData.spokenLanguages?.map((language) => (
-                  <span key={Math.random()}>{language}</span>
-                )) || "EN"}
-              </p>
-              <p className="info">
+              {/* <p className="info">
                 Filming Locations:{" "}
-                {movieData.filmingLocations?.map((location) => (
+                {movieDetails.filmingLocations?.map((location) => (
                   <span key={Math.random()}>{location}</span>
                 ))}
-              </p>
-              <p className="info">
+              </p> */}
+              {/* <p className="info">
                 Interests:{" "}
-                {movieData.interests?.map((interest) => (
+                {movieDetails.interests?.map((interest) => (
                   <span key={Math.random()}>{interest}, </span>
                 ))}
-              </p>
+              </p> */}
               <p className="info">
-                Votes: <span>{movieData.numVotes?.toLocaleString() || 0}</span>
+                Votes:{" "}
+                <span>{movieDetails.vote_count?.toLocaleString() || 0}</span>
               </p>
             </div>
           )}

@@ -16,7 +16,7 @@ const MovieResult = ({ result }) => {
 
   return (
     <li className="w-40 md:w-48 h-60 bg-dark relative p-1 rounded-2xl cursor-pointer overflow-hidden">
-      <Link to={`/movie/${result.id}`} state={{ result }}>
+      {/* <Link to={`/movie/${result.id}`} state={{ result }}> */}
         <div className="w-full h-fit relative z-10">
           <button
             className="text-gray-500 p-1 text-medium flex items-center justify-center absolute right-2 top-2 transition duration-200 ease-in rounded-full cursor-pointer hover:bg-gray-400/10 hover:text-white"
@@ -44,7 +44,7 @@ const MovieResult = ({ result }) => {
         <span className="text-sm pt-2 pb-1 text-gray-600 font-bold ">
           {result.averageRating}⭐
         </span>
-      </Link>
+      {/* </Link> */}
     </li>
   );
 };

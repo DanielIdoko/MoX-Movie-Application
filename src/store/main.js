@@ -18,9 +18,9 @@ const Main = create((set, get) => ({
     set({ searchTerm: value });
   },
 
-  handleToggleModal: () => {
+  handleHideModal: () => {
     const { modalShown } = get();
-    set({ modalShown: !modalShown });
+    set({ modalShown: false });
   },
 
   handleToggleSearchBar: () => {
@@ -29,7 +29,7 @@ const Main = create((set, get) => ({
   },
 
   handleSaveMovie: (movie) => {
-    const { savedMovies } = get();
+    const { savedMovies, modalShown } = get();
 
     // Check if the movie is already saved. Using the unique 'id' for this.
     const isMovieAlreadySaved = savedMovies.some(
@@ -40,7 +40,7 @@ const Main = create((set, get) => ({
 
     if (isMovieAlreadySaved) {
       // Do not proceed with updating the array if the movie has been saved.
-      set({ modalShown: true, movieSaved: true });
+      set({ movieSaved: true });
       return;
     } else {
       // If the movie has not yet been saved, add it to the array.
