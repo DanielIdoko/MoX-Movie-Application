@@ -1,14 +1,6 @@
-import React, {
-  lazy,
-  Suspense,
-  useCallback,
-  useEffect,
-  useMemo,
-  useState,
-} from "react";
+import React, { lazy, Suspense, useEffect, useMemo, useState } from "react";
 import Fuse from "fuse.js";
 import { useParams } from "react-router-dom";
-import useFetchMovies from "../store/useFetchMovies";
 import SearchInput from "../components/SearchInput";
 import MovieResult from "../components/MovieResult";
 import Spinner from "../components/Spinner";
@@ -17,39 +9,41 @@ import { searchImage } from "../assets";
 const RecommendedSearches = lazy(() =>
   import("../components/RecommendedSearches")
 );
+const MovieCard = lazy(() => import("../components/MovieCard"));
+import { options } from "../utils/API";
 
 const SearchPage = () => {
   const { term } = useParams();
   const [searchResults, setSearchResults] = useState([]);
-  const { movies, fetchMovies, isLoading } = useFetchMovies();
+  const [errorMessage, setErrorMessage] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
 
-  // Fuse Js search options
-  const searchOptions = {
-    includeScore: true,
-    keys: ["originalTitle", "genres", "description"],
+  const searchMovies = async (params) => {
+    try {
+      const response = await fetch(
+        `https://api.themoviedb.org/3/search/movie?query=${term}&include_adult=false&language=en-US&page=1`,
+        options
+      );
+      const data = await response.json();
+      // console.log(data.results);
+      setSearchResults(data.results);
+      setIsLoading(false);
+    } catch (error) {
+      setErrorMessage(error);
+      setIsLoading(false);
+    } finally {
+      setIsLoading(false);
+      setErrorMessage(null);
+    }
   };
 
-  // update searchResults function
-  const updateSearchResults = useMemo(() => {
-    // The search logic should run whenever the `term` or `movies` change.
-    if (movies.length > 0 && term) {
-      const fuse = new Fuse(movies, searchOptions);
-      const results = fuse.search(term);
-
-      setSearchResults(results);
-    } else {
-      // Clear results if the search term is empty or no movies are loaded
-      setSearchResults([]);
-    }
-  }, [term, movies]);
-
   useEffect(() => {
-    fetchMovies();
-  }, []);
+    searchMovies();
+  }, [term]);
 
   return (
     <div className="w-full p-3 h-full overflow-auto bg-dark">
-      <div className="w-full h-fit flex items-center justify-start md:px-5 mt-4 md:mt-0 md:py-5 md:mt-20 fixed top-0 left-0 md:left-4 z-50">
+      <div className="w-full h-fit flex items-center justify-start md:px-5 mt-4 md:py-5 md:mt-20 fixed top-0 left-0 md:left-4 z-50">
         <SearchInput />
       </div>
       {!term && (
@@ -82,13 +76,15 @@ const SearchPage = () => {
         {term &&
           (searchResults.length > 0 ? (
             <ul className="w-full grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 content-center px-3 py-2 md:p-6 gap-6 mt-5">
-              {searchResults.map((result) => (
-                <MovieResult
-                  key={Math.random()}
-                  result={result.item}
-                  state={result}
-                />
-              ))}
+              <Suspense>
+                {searchResults.map((movieData) => (
+                  <MovieCard
+                    movieData={movieData}
+                    movieState={movieData}
+                    key={movieData.id}
+                  />
+                ))}
+              </Suspense>
             </ul>
           ) : (
             <p className="text-white p-3 text-small">

@@ -37,7 +37,7 @@ function Navbar() {
         />
       </Link>
 
-      <nav className="w-fit rounded-4xl p-3 md:p-3 xl:p-3.5 flex flex-1 justify-around md:justify-start md:gap-15 lg:ml-70">
+      <nav className="w-fit rounded-4xl p-3 md:p-3 xl:p-3.5 flex flex-1 justify-around md:justify-start md:gap-15 md:ml-30 lg:ml-70">
         {navs.map((navLink) => (
           <NavLink
             key={uuid()}

@@ -2,6 +2,7 @@ import React from "react";
 import { FiTrash } from "react-icons/fi";
 import { Link } from "react-router-dom";
 import Main from "../../store/main";
+import { ImageBaseUrl } from "../../utils/API";
 
 // Confirmation Modal
 const ConfirmModal = ({
@@ -56,13 +57,13 @@ const SavedMovie = ({ movie, handleToggleConfirmModal, confirmModalShown }) => {
         to={`/movie/${movie.id}`}
       >
         <img
-          src={movie.primaryImage}
+           src={ImageBaseUrl + movie.poster_path ? ImageBaseUrl + movie.poster_path : PosterImage}
           className="w-12 h-12 rounded-full object-cover"
-          alt={movie.originalTitle}
+          alt={movie.original_title}
         />
         <div className="flex flex-col">
           <p className="text-sm font-bold text-gray-200">
-            {movie.originalTitle}
+            {movie.original_title}
           </p>
         </div>
       </Link>
