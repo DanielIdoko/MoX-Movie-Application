@@ -1,22 +1,28 @@
-# Movie App with React, RapidAPI, Tailwindcss, React Router and JavaScript.
+# Movie web App with React + TMDB API + Tailwindcss
 
-
-## Features:
-1. Browse Movies of different categories
+## Features
+1. Browse different categories of movies
 2. Search for Movies
-3. Save Favourite Movies
-4. View full movies information
-This App is fully functional and is built on ReactJs Framework alongside TMDB API and Tailwindcss.
+3. See popular, trending and upcoming movies
+4. Save Favourite Movies
+5. View full movies details
 
 
-### How to get started
-
+### How to use
 ```js
 
-#Install necessary packages and dependencies
-npm i
+//Install necessary packages and dependencies
+//NPM
+npm install
 
-#Start the development server
-npm run dev 
+//PNPM
+pnpm install
+
+//Start the development server
+//NPM
+npm run dev
+
+//PNPM
+pnpm dev
 
 ```
