@@ -6,7 +6,7 @@ import Main from "../store/main";
 import { lazy } from "react";
 import ScrollToTop from "../utils/ScrollToTop";
 const Modal = lazy(() => import("../components/Modal/Modal"));
-import { Analytics } from "@vercel/analytics/next";
+import { Analytics } from "@vercel/analytics/react";
 
 const Layout = () => {
   const { modalShown, handleHideModal, getSavedMovies } = Main();
