@@ -51,9 +51,9 @@ const SavedPage = () => {
                 />
               ))
           ) : (
-            <div className="w-full h-full flex items-center justify-center p-30">
+            <div className="w- h-full flex items-center justify-center p-30">
               <p className="text-gray-400 text-small">
-                No Movies Saved here Yet
+                No Movies Saved Yet
               </p>
             </div>
           )}
