@@ -39,14 +39,12 @@ const movieGenres = [
   { id: 53, name: "Thriller", color: "#2ecc71" },
   { id: 10752, name: "War", color: "#c0392b" },
   { id: 37, name: "Western", color: "#a0522d" },
-  { id: 330, name: "Romance", color: "#ff4328" },
+  { id: 10749, name: "Liebesfilm", color: "#ff4328" },
 ];
 
 export default function Home() {
-  // Search bar state import
   const { searchBarVisible } = Main();
 
-  // Main states
   const [selectedCategory, setSelectedCategory] = useState(28);
   const [errorMessage, setErrorMessage] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
